@@ -1,11 +1,24 @@
-import {estilos} from './inicial'
-import {View, Text} from 'react-native'
+
+import {StyleSheet,View, Text} from 'react-native'
+import { Cabecalho } from '../components/Cabecalho'
+import { Botao } from '../components/Botao'
 
 export function Inicial(){
     return(
         <View style={estilos.conteiner}>
-            <Text style={estilos.texto}>Meu app</Text>
-            <Text style={estilos.texto}>2DS</Text>
+            <Cabecalho
+                titulo ="senai roberto mange"
+                subtitulo="2DS"
+                />
+            <Botao texto = "usuario"/>
+            <Botao texto = "sensores"/>
+            <Botao texto = "sobre"/>
         </View>
     )
 }
+
+const estilos = StyleSheet.create({
+    conteiner:{
+      flex: 1,
+    }
+})
