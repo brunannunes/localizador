@@ -7,17 +7,19 @@ import 'react-native-get-random-values'
 import {v4 as uuid} from 'uuid'
 import { Usuario } from "../components/Usuario"
 
+
+
 export function Usuarios(){
 
     const [listaUsuarios, setListaUsuarios] = useState([]);
 
-    const adicionarUsuario=(nome,email,telefone)=>{
+    const adicionarUsuario=(nome,usuario,senha)=>{
 
         let novoUsuario = {
             codigo:  uuid(),
             nome: nome,
-            email: email,
-            telefone: telefone,
+            usuario: usuario,
+            senha: senha,
         }
 
         
@@ -35,12 +37,13 @@ export function Usuarios(){
         )
     }
 
+    
+
     return(
         <View style={estilos.conteiner}>
             <Cabecalho titulo ="usuarios"/>
 
             <Formulario adicionar={adicionarUsuario} />
-
             <Lista 
             colecao={listaUsuarios}
             remover={removerUsuario}

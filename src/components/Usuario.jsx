@@ -1,13 +1,13 @@
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 
-export function Usuario({nome,email,telefone, remover}){
+export function Usuario({nome,usuario,senha, remover}){
     return(
         <View style={estilos.conteiner}>
 
             <View style={estilos.conteinerDados}>
                 <Text style={estilos.item}>{nome}</Text>
-                <Text style={estilos.item}>{email}</Text>
-                <Text style={estilos.item}>{telefone}</Text>
+                <Text style={estilos.item}>{usuario}</Text>
+                <Text style={estilos.item}>{senha}</Text>
             </View>
 
             <TouchableOpacity 

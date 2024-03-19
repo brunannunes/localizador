@@ -5,8 +5,8 @@ import { View, StyleSheet, Text, TextInput,  TouchableOpacity } from "react-nati
 export function Formulario({adicionar}){
 
     const [nome, setNome] =  useState('')
-    const [email, setEmail] = useState('')
-    const [telefone, setTelefone] = useState('')
+    const [usuario, setUsuario] = useState('')
+    const [senha, setSenha] = useState('')
 
     return(
         <View style={estilos.container}>
@@ -23,26 +23,26 @@ export function Formulario({adicionar}){
 
                 <TextInput
                     style = {estilos.campo}
-                    placeholder="Email"
+                    placeholder="Usuario"
                     placeholderTextColor='#000'
                     keyboardType='email-address'
-                    onChangeText={setEmail}
-                    value={email}
+                    onChangeText={setUsuario}
+                    value={usuario}
                  />
 
 
                 <TextInput
                     style = {estilos.campo}
-                    placeholder="Telefone"
+                    placeholder="Senha"
                     placeholderTextColor='#000'
                     keyboardType='phone-pad'
-                    onChangeText={setTelefone}
-                    value={telefone}
+                    onChangeText={setSenha}
+                    value={senha}
                 />
             </View>
            
            <TouchableOpacity style={estilos.botao}
-                onPress={() => adicionar(nome,email,telefone)}
+                onPress={() => adicionar(nome,usuario,senha)}
            >
                 <Text style={estilos.texto}>+</Text>
            </TouchableOpacity>

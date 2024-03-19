@@ -13,8 +13,8 @@ export function Lista({colecao, remover}){
             renderItem={({item}) => (
                 <Usuario
                 nome={item.nome}
-                email={item.email}
-                telefone={item.telefone}
+                usuario={item.usuario}
+                senha={item.senha}
                 remover = {()=>remover(item.codigo)}
                 />
                    
