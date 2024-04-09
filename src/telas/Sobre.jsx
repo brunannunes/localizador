@@ -1,21 +1,19 @@
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import { Cabecalho } from '../componentes/Cabecalho'
 
-import {StyleSheet,View, Text} from 'react-native'
-import { Cabecalho } from '../components/Cabecalho'
-import { Botao } from '../components/Botao'
-
-export function Sobre(){
+export function Sobre(){ 
+  
     return(
         <View style={estilos.conteiner}>
-            <Cabecalho
-                titulo ="Sobre"
-                />
-           
+            <Cabecalho titulo="Sobre" />
         </View>
     )
 }
 
 const estilos = StyleSheet.create({
-    conteiner:{
-      flex: 1,
-    }
+    conteiner: {
+        flex: 1,
+        backgroundColor: '#000',
+    },
 })

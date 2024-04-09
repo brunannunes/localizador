@@ -1,59 +1,60 @@
 import { View, StyleSheet } from "react-native"
-import { Cabecalho } from "../components/Cabecalho"
-import { Formulario } from "../components/Formulario"
-import { Lista } from "../components/Lista"
 import { useState } from "react"
-import 'react-native-get-random-values'
-import {v4 as uuid} from 'uuid'
-import { Usuario } from "../components/Usuario"
+import { Cabecalho } from '../componentes/Cabecalho'
+import { FormularioUsuario } from '../componentes/FormularioUsuario'
+import { ListaUsuarios } from "../componentes/ListaUsuarios"
+import uuid from 'react-native-uuid'
 
+export function Usuarios(){ 
 
+    const [usuarios, setUsuarios] = useState([])
 
-export function Usuarios(){
-
-    const [listaUsuarios, setListaUsuarios] = useState([]);
-
-    const adicionarUsuario=(nome,usuario,senha)=>{
+    function adicionarUsuario(nome, email, telefone, usuario, senha){
 
         let novoUsuario = {
-            codigo:  uuid(),
+            codigo: uuid.v4(),
             nome: nome,
+            email: email,
+            telefone: telefone,
             usuario: usuario,
-            senha: senha,
-        }
+            senha: senha
+        } 
 
-        
+        setUsuarios([...usuarios, novoUsuario])
 
-        setListaUsuarios([...listaUsuarios, novoUsuario])
-        
         console.log(novoUsuario)
-        
-
     }
 
-    const removerUsuario = codigo => {
-        setListaUsuarios(
-            listaUsuarios.filter(usuario => usuario.codigo !== codigo)
-        )
-    }
 
-    
+    function removerUsuario(codigo){
+
+        setUsuarios( usuarios.filter(
+            usuario => usuario.codigo !== codigo
+        ) )
+    }
 
     return(
         <View style={estilos.conteiner}>
-            <Cabecalho titulo ="usuarios"/>
 
-            <Formulario adicionar={adicionarUsuario} />
-            <Lista 
-            colecao={listaUsuarios}
-            remover={removerUsuario}
+            <Cabecalho 
+                titulo="Cadastro de usuários"
+            />
+
+            <FormularioUsuario 
+                adicionar={adicionarUsuario}
+            />  
+
+            <ListaUsuarios 
+                colecao={usuarios}
+                remover={removerUsuario}
             />
         </View>
     )
 }
 
 const estilos = StyleSheet.create({
-    conteiner:{
-        flex: 1,
-      },
-})
+    conteiner: {
+      flex: 1,
+      backgroundColor: '#080a0c'
+    },
+  });
