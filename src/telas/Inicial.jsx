@@ -1,28 +1,22 @@
-import { StyleSheet, View } from 'react-native'
-import { Cabecalho } from '../componentes/Cabecalho'
-import { Botao } from '../componentes/Botao'
+import { Text, View, StyleSheet } from "react-native";
+import { Cabecalho } from "../components/Cabecalho.jsx";
+import { Botao } from "../components/Botao.jsx";
 
-export const Inicial = () => {
-  return (
-    <View style={estilos.conteiner}>
-
-      <Cabecalho 
-        titulo="Localizador"
-        subtitulo="2DS-B"
-      />
-
-      <Botao texto="Usuários" />
-      <Botao texto="Sensores" />
-      <Botao texto="Sobre" />
-
-    </View>
-  );
+export function Inicial() {
+    return(
+        <View style={styles.container}>
+            <Cabecalho titulo = "Localizador" />
+           
+        </View>
+    );
 }
 
-const estilos = StyleSheet.create({
-  conteiner: {
-    flex: 1,
-    backgroundColor: '#080a0c'
-  },
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    texto:{
+        color: '#000',
+        fontSize: 24
+    }
 });
-

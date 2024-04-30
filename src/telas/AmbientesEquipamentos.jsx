@@ -1,60 +1,65 @@
+import { View, StyleSheet } from "react-native"
+import { Cabecalho } from "../components/Cabecalho"
+import { ListaAmbienteEquipamento } from "../components/ListaAmbienteEquipamento"
+import { useState } from "react"
+import 'react-native-get-random-values'
+import { FormularioAmbienteEquipamento } from "../components/FormularioAmbienteEquipamento"
 
-import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import { useState } from 'react'
-import { Cabecalho } from '../componentes/Cabecalho'
-import { FormularioAmbienteEquipamento } from '../componentes/FormularioAmbienteEquipamento'
-import { ListaAmbienteEquipamento } from '../componentes/ListaAmbienteEquipamento'
-import uuid from 'react-native-uuid'
 
-export function AmbientesEquipamentos(){
-
-    const [equipamento, setEquipamento] = useState([])
-
-    function adicionarEquipamento(statusOperacional, instrucoesSeguranca,contatoResponsavel,latitude,longitude){
-
-        let novoEquipamento = {
+export const AmbientesEquipamentos = () => {
+ 
+    const [ambientesEquipamentos, setAmbientesEquipamentos] = useState([])
+ 
+    const adicionarAmbienteEquipamento = (descricao,
+                                          statusOperacional,
+                                          instrucoesSeguranca,
+                                          contatoResponsavel,
+                                          latitude,
+                                          longitude) => {
+ 
+        let novoAmbienteEquipamento = {
             codigo: uuid.v4(),
-            statusOperacional:statusOperacional,
-            instrucoesSeguranca:instrucoesSeguranca,
-            contatoResponsavel:contatoResponsavel,
-            latitude:latitude,
-            longitude:longitude
+            descricao: descricao,
+            statusOperacional: statusOperacional,
+            instrucoesSeguranca: instrucoesSeguranca,
+            contatoResponsavel: contatoResponsavel,
+            latitude: latitude,
+            longitude: longitude
         }
-
-        setEquipamento([...equipamento, novoEquipamento])
-        console.log(novoEquipamento)
+ 
+        setAmbientesEquipamentos([...ambientesEquipamentos, novoAmbienteEquipamento])
     }
-
-    function removerEquipamento(codigo){
-        setEquipamento(equipamento.filter(
-            equipamento => equipamento.codigo !== codigo
-        ))
+ 
+ 
+    const removerAmbienteEquipamento = (codigo) => {
+ 
+        setAmbientesEquipamentos( ambientesEquipamentos.filter(
+            ambienteEquipamento => ambienteEquipamento.codigo !== codigo
+        ) )
     }
-
+ 
     return(
-        <View style={estilos.conteiner}>
+        <View style={styles.container}>
+ 
             <Cabecalho
-                titulo="Cadastro de equipamento"
+                titulo="Cadastro de ambientes ou equipamentos"
             />
-
+ 
             <FormularioAmbienteEquipamento
-                adicionar={adicionarEquipamento}
-            
-            />
-
+                adicionar={adicionarAmbienteEquipamento}
+            />  
+ 
             <ListaAmbienteEquipamento
-                colecao={equipamento}
-                remover={removerEquipamento}
+                colecao={ambientesEquipamentos}
+                remover={removerAmbienteEquipamento}
             />
         </View>
     )
-
 }
 
-const estilos = StyleSheet.create({
-    conteiner: {
-      flex: 1,
-      backgroundColor: '#080a0c'
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
     },
-  });
+
+})

@@ -1,60 +1,33 @@
 import { View, StyleSheet } from "react-native"
+import { Cabecalho } from "../components/Cabecalho"
+import { Lista } from "../components/Lista"
 import { useState } from "react"
-import { Cabecalho } from '../componentes/Cabecalho'
-import { FormularioUsuario } from '../componentes/FormularioUsuario'
-import { ListaUsuarios } from "../componentes/ListaUsuarios"
-import uuid from 'react-native-uuid'
+import 'react-native-get-random-values'
 
-export function Usuarios(){ 
 
-    const [usuarios, setUsuarios] = useState([])
+export function Usuarios() {
 
-    function adicionarUsuario(nome, email, telefone, usuario, senha){
+    //useState serve para manipular o que será exibido para o usuário
+    const [listaUsuarios, setListaUsuarios] = useState([]);
 
-        let novoUsuario = {
-            codigo: uuid.v4(),
-            nome: nome,
-            email: email,
-            telefone: telefone,
-            usuario: usuario,
-            senha: senha
-        } 
+    const removerUsuario = codigo => {
 
-        setUsuarios([...usuarios, novoUsuario])
-
-        console.log(novoUsuario)
+        //verificando se cada usuario da lista tem um codigo diferente do codigo passado
+        setListaUsuarios(listaUsuarios.filter( usuario => usuario.codigo !== codigo ))
     }
 
-
-    function removerUsuario(codigo){
-
-        setUsuarios( usuarios.filter(
-            usuario => usuario.codigo !== codigo
-        ) )
-    }
-
-    return(
-        <View style={estilos.conteiner}>
-
-            <Cabecalho 
-                titulo="Cadastro de usuários"
-            />
-
-            <FormularioUsuario 
-                adicionar={adicionarUsuario}
-            />  
-
-            <ListaUsuarios 
-                colecao={usuarios}
-                remover={removerUsuario}
-            />
-        </View>
+    return (
+            <View style={styles.container}>
+                <Cabecalho titulo = "Usuarios"/>
+                <Lista colecao={listaUsuarios}
+                remover={removerUsuario}/>
+            </View>
     )
 }
 
-const estilos = StyleSheet.create({
-    conteiner: {
-      flex: 1,
-      backgroundColor: '#080a0c'
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
     },
-  });
+
+})

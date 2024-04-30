@@ -1,19 +1,20 @@
-import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import { Cabecalho } from '../componentes/Cabecalho'
+import { View, StyleSheet } from "react-native"
+import { Cabecalho } from "../components/Cabecalho"
+import 'react-native-get-random-values'
 
-export function Sobre(){ 
-  
-    return(
-        <View style={estilos.conteiner}>
-            <Cabecalho titulo="Sobre" />
-        </View>
+
+export function Sobre() {
+
+    return (
+            <View style={styles.container}>
+                <Cabecalho titulo = "Sobre"/>
+            </View>
     )
 }
 
-const estilos = StyleSheet.create({
-    conteiner: {
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
-        backgroundColor: '#000',
     },
+
 })
