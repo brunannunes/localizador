@@ -1,59 +1,56 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import { Inicial } from '../telas/Inicial'
+import {Inicial} from '../telas/Inicial'
 import {Usuarios} from '../telas/Usuarios'
 import {AmbientesEquipamentos} from '../telas/AmbientesEquipamentos'
-import {House, User, ArrowsInCardinal} from 'phosphor-react-native'
+import { Feather } from '@expo/vector-icons'
 
-const {Navigator, Screen} = createBottomTabNavigator()
+const { Navigator, Screen } = createBottomTabNavigator()
 
 export function RotasTab(){
     return(
-
-        <Navigator screenOptions={{
-            headerShown: false,
+        <Navigator screenOptions={{ 
+            headerShown: false, 
             tabBarShowLabel: false,
             tabBarActiveTintColor: '#fff',
             tabBarInactiveTintColor: '#6c757d',
-            tabBarStyle:{
-                backgroundColor: '#000',
+            tabBarStyle: {
+                backgroundColor: '#4f030a',
                 borderTopColor: 0,
                 paddingBottom: 10,
-                paddingTop: 12
+                paddingTop: 10
             }
-            }}>
-            
-            <Screen
+        }}>
+
+            <Screen 
                 name='inicial'
                 component={Inicial}
                 options={{
                     tabBarIcon: ({color, size}) => (
-                        <House color={color} size={size}/>
+                        <Feather name="home" size={size} color={color} /> 
                     )
                 }}
             />
 
-            <Screen
+            <Screen 
                 name='usuarios'
                 component={Usuarios}
                 options={{
                     tabBarIcon: ({color, size}) => (
-                        <User color={color} size={size}/>
+                        <Feather name="users" size={size} color={color} /> 
                     )
-                }}
+                }}                
             />
-            
-            <Screen
+
+            <Screen 
                 name='ambiente'
                 component={AmbientesEquipamentos}
                 options={{
                     tabBarIcon: ({color, size}) => (
-                        <ArrowsInCardinal color={color} size={size}/>
+                        <Feather name="map-pin" size={size} color={color} /> 
                     )
-                }}
+                }}                
             />
 
         </Navigator>
-
-
     )
 }
