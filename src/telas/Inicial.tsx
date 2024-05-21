@@ -41,7 +41,8 @@ useEffect(() => {
   }, (response) =>{
     setLocation(response);
     mapRef.current?.animateCamera({
-      pitch: 70
+      pitch: 70,
+      center: response.coords
     })
 
   });
