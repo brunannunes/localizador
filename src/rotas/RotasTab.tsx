@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Inicial } from '../telas/Inicial'
 import {Usuarios} from '../telas/Usuarios'
-import {AmbientesEquipamentos} from '../telas/AmbientesEquipamentos'
+import { CadPonto } from '../telas/CadastroPonto';
 import { House, MapPin , UserCircle } from 'phosphor-react-native';
 
 const { Navigator, Screen } = createBottomTabNavigator()
@@ -26,7 +26,7 @@ export function RotasTab(){
                 component={Inicial}
                 options={{
                     tabBarIcon: ({color, size}) => (
-                       <House  size={22} color='#fff'/>
+                        <MapPin size={22} color='#fff'/>
                     )
                 }}
             />
@@ -36,14 +36,14 @@ export function RotasTab(){
                 component={Usuarios}
                 options={{
                     tabBarIcon: ({color, size}) => (
-                       <MapPin size={22} color='#fff'/>
+                       <House  size={22} color='#fff'/>
                     )
                 }}                
             />
 
             <Screen 
                 name='ambiente'
-                component={AmbientesEquipamentos}
+                component={CadPonto}
                 options={{
                     tabBarIcon: ({color, size}) => (
                         <UserCircle size={22} color='#fff'/>
